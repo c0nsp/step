@@ -10,11 +10,11 @@ similar = 'il1Lo0O'
 chars = ''
 quantity = int(input('Сколько паролей делаем? '))
 len_pass = int(input('Сколько будет символов в пароле? '))
-if_dig = input('В пароле будут числа?("да" / "нет") ')
-if_low = input('В пароле будут маленькие буквы?("да" / "нет") ')
-if_upp = input('В пароле будут большие буквы?("да" / "нет") ')
-if_punct = input('В пароле будут символы?("да" / "нет") ')
-if_sim = input('В пароле будут неоднозначные символы "il1Lo0O"?("да" / "нет") ')
+if_dig = input('В пароле будут числа?("да" / "нет") ').strip()
+if_low = input('В пароле будут маленькие буквы?("да" / "нет") ').strip()
+if_upp = input('В пароле будут большие буквы?("да" / "нет") ').strip()
+if_punct = input('В пароле будут символы?("да" / "нет") ').strip()
+if_sim = input('В пароле будут неоднозначные символы "il1Lo0O"?("да" / "нет") ').strip()
 
 if if_dig == 'да':
     chars += digits
@@ -28,15 +28,12 @@ if if_sim == 'нет':
     for c in similar:
         chars = chars.replace(c, '')
 
-def generate_password(len_pass, chars):
-    password = ''
-    for i in range(1, quantity+1):
-        shuffle(chars)
-        sample(chars, len_pass)
-        return password
+def generate_password():
+    for _ in range(quantity):
+        print(*sample(chars, len_pass), sep='')
+    print('Спасибо за использование генератора паролей!')
 
-for i in range(quantity):
-    generate_password(len_pass, chars)
+generate_password()
 
 
 
